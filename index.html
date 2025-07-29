@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Story</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      text-align: center;
+      padding: 50px;
+    }
+    .box {
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px dashed #ff69b4;
+      border-radius: 15px;
+      max-width: 500px;
+      background-color: #fff;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      background-color: #ff69b4;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #ff1493;
+    }
+    #gif {
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box" id="step1">
+    <h2>Do you love me?</h2>
+    <button onclick="loveResponse(true)">You love me ❣</button>
+    <button onclick="loveResponse(false)">You don't love me 💔</button>
+  </div>
+
+  <div class="box" id="step2" style="display:none;">
+    <h2 id="loveMessage"></h2>
+    <h3>You will never leave me👀</h3>
+    <button onclick="leaveResponse(true)">Yes</button>
+    <button onclick="leaveResponse(false)">No</button>
+    <img id="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="200">
+  </div>
+
+  <div class="box" id="step3" style="display:none;">
+    <h2>When will we meet?</h2>
+    <button onclick="meetResponse(tomorrow)">Tomorrow</button>
+            <button onclick="meetResponse(after )">After few days</button>
+
+    <video  src="VID-20250521-WA0000.mp4" width = "200" controls="autoplay loop" ></video>
+
+    <h3 id="meetMessage"></h3>
+  </div>
+
+  <script>
+    function loveResponse(lovesYou) {
+      document.getElementById("step1").style.display = "none";
+      document.getElementById("step2").style.display = "block";
+      const msg = lovesYou ? "I love you too ❣" : "I hate you";
+      document.getElementById("loveMessage").innerText = msg;
+    }
+
+    function leaveResponse(willStay) {
+      if (willStay) {
+        document.getElementById("gif").style.display = "block";
+      } else {
+        document.getElementById("gif").style.display = "none";
+      }
+      setTimeout(() => {
+        document.getElementById("step2").style.display = "none";
+        document.getElementById("step3").style.display = "block";
+      }, 2000);
+    }
+
+    function meetResponse(time) {
+      document.getElementById("meetMessage").innerText = "Yay! We'll meet " + time + "!";
+       if(time) {
+            document.getElementById("gif1").style.display = "block";
+        } else{
+            document.getElementById("gif1").style.display = "none";
+        }
+    }
+  
+  </script>
+
+</body>
+</html>
